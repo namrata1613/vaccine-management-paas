@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>View Information</title>
+</head>
+<body>
+    <h1>View Information</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>Address</th>
+                <th>Number</th>
+                <th>Diagnosis</th>
+                <th>Doctor</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for info in data %}
+            <tr>
+                <td>{{ info['id'] }}</td>
+                <td>{{ info['name'] }}</td>
+                <td>{{ info['gender'] }}</td>
+                <td>{{ info['age'] }}</td>
+                <td>{{ info['address'] }}</td>
+                <td>{{ info['number'] }}</td>
+                <td>{{ info['diagnosis'] }}</td>
+                <td>{{ info['doctor'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
