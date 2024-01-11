@@ -12,224 +12,65 @@
   <body>
 
     <div class="container-fluid p-5">
-        <h1 class="text-center mb-5">Patient Information System</h1>
+        <h1 class="text-center mb-5">Covid Vaccine Management System</h1>
         <div class="row">
-            <button type="button" class="btn btn-primary" id="add-btn">Add</button>
-            <button type="button" class="btn btn-primary" id="update-btn">Update</button>
-            <button type="button" class="btn btn-danger" id="delete-btn">Delete</button>
-            <button type="button" class="btn btn-secondary" id="view-btn">View</button>
+            <button type="button" class="btn btn-primary" id="add-btn">Submit</button>
+            <button type="button" class="btn btn-secondary" id="viewVaccine-btn">View Vaccine Details</button>
+            <button type="button" class="btn btn-secondary" id="viewDiagnosed-btn">View Current Diagnosed Members </button>
+            <button type="button" class="btn btn-secondary" id="viewDashboard-btn">View Analytics Dashboard</button>
+            <button type="button" class="btn btn-primary" id="vaccination-btn">Vaccination Form</button>
+            <button type="button" class="btn btn-primary" id="dignosed-btn">Diagnosed Form</button>
         </div>
 
             <div id="add-container" class="container-fluid p-5 d-none">
-                <!-- Add Information Form -->
+                <!-- Add Regular Checkup Information Form -->
                 <form id="add-form">
-                    <h3>Add Information</h3>
+                    <h3>Insert Information</h3>
                     <div class="form-group">
-                        <label for="name">Name:</label>
-                        <input type="text" class="form-control" id="name" name="name" required>
+                        <label for="EpId">Employee ID:</label>
+                        <input type="text" class="form-control" id="EpId" name="EpId" required>
                     </div>
+                    
                     <div class="form-group">
-                        <label for="gender">Gender:</label>
-                        <select class="form-control" id="gender" name="gender" required>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                            <option value="other">Other</option>
-                        </select>
+                        <label for="Result">Address:</label>
+                        <textarea class="form-control" id="Result" name="Result" required></textarea>
                     </div>
-                    <div class="form-group">
-                        <label for="age">Age:</label>
-                        <input type="number" class="form-control" id="age" name="age" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="address">Address:</label>
-                        <textarea class="form-control" id="address" name="address" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="number">Phone Number:</label>
-                        <input type="text" class="form-control" id="number" name="number" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="diagnosis">Diagnosis:</label>
-                        <textarea class="form-control" id="diagnosis" name="diagnosis" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="doctor">Doctor:</label>
-                        <input type="text" class="form-control" id="doctor" name="doctor" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Add</button>
+                    
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
             
-            <div id="update-container" class="container-fluid p-5 d-none">
-                <!-- Update Patient Information Form -->
-                <h2>Update Patient Information</h2>
-<form id="update-form" method="post">
-    <div class="form-group">
-        <label for="patient_id">Patient ID:</label>
-        <input type="text" class="form-control" id="patient_id" name="patient_id" required>
-    </div>
-    <div class="form-group">
-        <label for="name">Name:</label>
-        <input type="text" class="form-control" id="name" name="name" required>
-    </div>
-    <div class="form-group">
-        <label for="gender">Gender:</label>
-        <select class="form-control" id="gender" name="gender" required>
-            <option value="">Select Gender</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="age">Age:</label>
-        <input type="number" class="form-control" id="age" name="age" required>
-    </div>
-    <div class="form-group">
-        <label for="address">Address:</label>
-        <textarea class="form-control" id="address" name="address" required></textarea>
-    </div>
-    <div class="form-group">
-        <label for="number">Phone Number:</label>
-        <input type="tel" class="form-control" id="number" name="number" pattern="[0-9]{10}" required>
-    </div>
-    <div class="form-group">
-        <label for="diagnosis">Diagnosis:</label>
-        <textarea class="form-control" id="diagnosis" name="diagnosis" required></textarea>
-    </div>
-    <div class="form-group">
-        <label for="doctor">Doctor:</label>
-        <input type="text" class="form-control" id="doctor" name="doctor" required>
-    </div>
-    <button type="submit" class="btn btn-primary">Update</button>
-</form>
-            </div>
-            
-            <div id="delete-container" class="container-fluid p-5 d-none">
-                <!-- Delete Form -->
-                <form id="delete-form">
-                    <h3>Delete Info</h3>
-                    <div class="form-group">
-                      <label for="delete-patient-id">Patient ID:</label>
-                      <input type="text" class="form-control" id="delete-patient-id" name="patient_id" required>
-                    </div>
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                  </form>
-            </div>
             
 
-            
-        
-    </div>
-    <script>
-        $(function() {
-            $('#add-form').submit(function(event) {
-                event.preventDefault();
-                var form = $(this);
-                $.ajax({
-                    url: '/add',
-                    type: 'POST',
-                    data: form.serialize(),
-                    success: function(response) {
-                        alert(response);
-                        form.trigger('reset');
-                    }
-                });
-            });
-        });
-    </script>
-
-    <!-- Update Patient Information -->
-
-
-<!-- Update Patient Information Script -->
-<script>
-    $('#update-form').submit(function (event) {
-        event.preventDefault();
-        var patient_id = $('#patient_id').val();
-        var name = $('#name').val();
-        var gender = $('#gender').val();
-        var age = $('#age').val();
-        var address = $('#address').val();
-        var number = $('#number').val();
-        var diagnosis = $('#diagnosis').val();
-        var doctor = $('#doctor').val();
-
-        $.ajax({
-            url: "/update",
-            type: "POST",
-            contentType: "application/json",
-            data: JSON.stringify({
-                PatientID: patient_id,
-                name: name,
-                gender: gender,
-                age: age,
-                address: address,
-                number: number,
-                diagnosis: diagnosis,
-                doctor: doctor
-            }),
-            success: function (response) {
-                alert(response);
-                $('#update-form')[0].reset();
-            },
-            error: function (response) {
-                alert(response.responseJSON.msg);
-            }
-        });
-    });
-</script>
-
-<!-- Delete Form -->
-
-  
-  <!-- AJAX for Delete Form -->
-  <script>
-    $("#delete-form").submit(function(event) {
-      event.preventDefault();
-      var patient_id = $("#delete-patient-id").val();
-  
-      $.ajax({
-        type: "POST",
-        url: "/delete",
-        data: JSON.stringify({
-          "PatientID": patient_id
-        }),
-        contentType: "application/json",
-        success: function(response) {
-          alert(response);
-          window.location.reload();
-        },
-        error: function(xhr) {
-          alert(xhr.responseText);
-        }
-      });
-    });
-  </script>
   
   <script>
     $(document).ready(function() {
-        // Add Button
+        // Submit Button
         $("#add-btn").click(function() {
             $("#add-container").removeClass("d-none");
             $("#update-container, #delete-container").addClass("d-none");
         });
-    
-        // Update Button
-        $("#update-btn").click(function() {
-            $("#update-container").removeClass("d-none");
-            $("#add-container, #delete-container").addClass("d-none");
-        });
-    
-        // Delete Button
-        $("#delete-btn").click(function() {
-            $("#delete-container").removeClass("d-none");
-            $("#add-container, #update-container").addClass("d-none");
-        });
+
     
         // View Button
-        $("#view-btn").click(function() {
-            window.location.href = "view.html";
+        $("#viewVaccine-btn").click(function() {
+            window.location.href = "viewVaccine.html";
+        });
+
+        $("#viewDiagnosed-btn").click(function() {
+            window.location.href = "viewDiagnosed.html";
+        });
+
+        $("#viewDashboard-btn").click(function() {
+            window.location.href = "viewAnalytics.html";
+        });
+
+        // routes
+        $("#viewVaccine-btn").click(function() {
+            window.location.href = "vaccination.html";
+        });
+        $("#viewVaccine-btn").click(function() {
+            window.location.href = "diagnosed.html";
         });
     });
     </script>
