@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>View Vaccine Information</title>
+</head>
+<body>
+    <h1>Vaccine Information</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>CertNo</th>
+                <th>vaccineName</th>
+                <th>Id</th>
+                <th>FirstVaccineDate</th>
+                <th>SecondVaccineDate</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for info in data %}
+            <tr>
+                <td>{{ info['CertNo'] }}</td>
+                <td>{{ info['vaccineName'] }}</td>
+                <td>{{ info['Id'] }}</td>
+                <td>{{ info['FirstVaccineDate'] }}</td>
+                <td>{{ info['SecondVaccineDate'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

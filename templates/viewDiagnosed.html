@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>View Diagnosed Information</title>
+</head>
+<body>
+    <h1>Diagnosed Information</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>RTPCRId</th>
+                <th>Id</th>
+                <th>LeavingDate</th>
+                <th>Hospital</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for info in data %}
+            <tr>
+                <td>{{ info['RTPCRId'] }}</td>
+                <td>{{ info['EpId'] }}</td>
+                <td>{{ info['LeavingDate'] }}</td>
+                <td>{{ info['Hospital'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

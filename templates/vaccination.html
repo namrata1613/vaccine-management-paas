@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Patient Information System</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+
+    <div class="container-fluid p-5">
+        <h1 class="text-center mb-5">Vaccination Form</h1>
+        <div class="row">
+            <button type="button" class="btn btn-primary" id="add-btn">Submit</button>
+            <button type="button" class="btn btn-primary" id="add-btn">Back</button>
+        </div>
+
+            <div id="add-container" class="container-fluid p-5 d-none">
+                <!-- Add Information Form -->
+                <form id="add-form">
+                    <h3>Fill Information</h3>
+                    <div class="form-group">
+                        <label for="name">CertNo :</label>
+                        <input type="text" class="form-control" id="CertNo" name="CertNo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">Vaccine Name :</label>
+                        <select class="form-control" id="vaccineName" name="vaccineName" required>
+                            <option value="covaxine">Covaxine</option>
+                            <option value="covishield">Covishield</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Id :</label>
+                        <input type="number" class="form-control" id="Id" name="Id" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">First Vaccine Date :</label>
+                        <textarea class="form-control" id="FirstVaccineDate" name="FirstVaccineDate" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="number"> Second Vaccine Date :</label>
+                        <input type="text" class="form-control" id="SecondVaccineDate" name="SecondVaccineDate" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+            
+            
+  
+
+  
+  <script>
+    $(document).ready(function() {
+        // Add Button
+        $("#add-btn").click(function() {
+            $("#add-container").removeClass("d-none");
+            $("#update-container, #delete-container").addClass("d-none");
+        });
+
+    
+        // View Button
+        
+        $("#view-btn").click(function() {
+            window.location.href = "index.html";
+        });
+    });
+    </script>
+    
+  </body>
+</html>
